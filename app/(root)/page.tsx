@@ -1,5 +1,6 @@
 
 
+import OngoingProjectsCarousel from "@/components/OngoingProjectCarousel";
 import { PerWordText } from "@/components/PerWordText";
 import RealTimeClock from "@/components/RealTime";
 import { SlideUpText } from "@/components/SlideUpText";
@@ -27,9 +28,9 @@ export default function Home() {
           "impactful"
         ]}
       />
-      <div>
-        <SlideUpText text="Ongoing Project"/>
-        <h2 className="text-xl">Ongoing Project</h2>
+      <div className="space-y-3 flex flex-col">
+        <SlideUpText text="Ongoing Project" className="text-2xl" highlightWords={["Project"]}/>
+        <OngoingProjectsCarousel/>
       </div>
     </main>
   );
