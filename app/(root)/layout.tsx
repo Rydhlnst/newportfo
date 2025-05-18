@@ -1,7 +1,7 @@
 
+import Footer from '@/components/Footer';
 import { PageHeader } from '@/components/PageHeader';
 import { Navbar } from '@/components/SideNavbar';
-import { Separator } from '@/components/ui/separator';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import React from 'react'
 
@@ -18,8 +18,11 @@ const MainLayout = ({
             <SidebarTrigger className=''/>
             <PageHeader/>
         </div>
-        <div className='px-8'>
-            {children}
+        <div className='h-full flex flex-col'>
+            <div className='flex-grow px-8'>
+                {children}
+            </div>
+            <Footer className='mt-auto px-8'/>
         </div>
       </main>
     </SidebarProvider>

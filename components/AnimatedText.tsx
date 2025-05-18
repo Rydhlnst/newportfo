@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { animateSplitText } from "@/gsap/splitTextAnimation";
-import { SlideUpText } from "./SlideUpText";
 import { ScrollFadeIn } from "./ScrollFadeIn";
 
 const AnimatedText = () => {

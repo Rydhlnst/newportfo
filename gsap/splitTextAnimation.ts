@@ -1,7 +1,6 @@
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 
-// Register SplitText plugin once
 gsap.registerPlugin(SplitText);
 
 export const animateSplitText = (element: Element) => {
@@ -16,6 +15,5 @@ export const animateSplitText = (element: Element) => {
     stagger: 0.15
   });
 
-  // Return cleanup function to revert SplitText when unmounted
   return () => split.revert();
 };

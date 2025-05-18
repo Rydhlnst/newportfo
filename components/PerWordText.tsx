@@ -8,9 +8,15 @@ type PerWordTextProps = {
   text: string;
   delay?: number;
   className?: string;
+  highlightWords?: string[]; // Tambahan untuk highlight
 };
 
-export function PerWordText({ text, delay = 0, className = "" }: PerWordTextProps) {
+export function PerWordText({ 
+  text, 
+  delay = 0, 
+  className = "", 
+  highlightWords = [] 
+}: PerWordTextProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -29,15 +35,26 @@ export function PerWordText({ text, delay = 0, className = "" }: PerWordTextProp
         }
       );
     }
-  }, [delay]);
-
+  }, [delay, text]); 
+  
   return (
     <div ref={containerRef} className={cn("flex flex-wrap gap-1", className)}>
-      {text.split(" ").map((word, idx) => (
-        <span key={idx} className="word opacity-0 inline-block">
-          {word}
-        </span>
-      ))}
+      {text.split(" ").map((word, idx) => {
+        const cleanWord = word.replace(/[.,]/g, ""); // Remove punctuation
+        const isHighlighted = highlightWords.includes(cleanWord);
+
+        return (
+          <span
+            key={idx}
+            className={cn(
+              "word opacity-0 inline-block",
+              isHighlighted && "font-semibold text-primary"
+            )}
+          >
+            {word}
+          </span>
+        );
+      })}
     </div>
   );
 }
