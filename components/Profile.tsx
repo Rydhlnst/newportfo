@@ -21,7 +21,7 @@ const Profile = () => {
         perWordRef2.current?.triggerAnim();
       }}
     >
-      <div className="flex flex-col w-full h-full space-y-3">
+      <div className="flex flex-col w-full h-full space-y-3 mt-8">
         <div className="flex w-full justify-between items-center">
           <SlideUpText text="Profile" className="text-2xl animate-item" highlightWords={["Profile"]} />
           <RealTimeClock />

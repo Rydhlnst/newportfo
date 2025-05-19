@@ -8,7 +8,7 @@ import React from 'react'
 
 const AboutPage = () => {
   return (
-    <main className="flex relative w-full flex-col mt-8 space-y-12" id='Profile'>
+    <main className="flex relative w-full flex-col space-y-12" id='Profile'>
           <Profile/>
           <Separator/>
           <div className='h-full w-full flex flex-col' id='history'>
