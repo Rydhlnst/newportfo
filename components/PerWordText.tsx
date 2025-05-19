@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useImperativeHandle, forwardRef, useCallback } from "react";
 import { gsap } from "gsap";
 import { cn } from "@/lib/utils";
 
@@ -9,47 +9,56 @@ type PerWordTextProps = {
   delay?: number;
   className?: string;
   highlightWords?: string[];
-  order?: number; // ✅ Tambahan untuk menentukan urutan animasi
-  chainDelay?: number
+  triggerAnimation?: boolean; // Jika false, harus dipicu manual via ref
+  stagger?: number;
 };
 
-export function PerWordText({
+export type PerWordTextHandle = {
+  triggerAnim: () => void;
+};
+
+const PerWordText = forwardRef<PerWordTextHandle, PerWordTextProps>(({
   text,
   delay = 0,
   className = "",
   highlightWords = [],
-  chainDelay = 0.5,
-  order = 0, // ✅ Default urutan ke-0 jika tidak diberikan
-}: PerWordTextProps) {
+  triggerAnimation = true,
+  stagger = 0.1,
+}, ref) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  const triggerAnim = useCallback(() => {
     const words = containerRef.current?.querySelectorAll(".word");
     if (words) {
-      const totalDurationPerWord = 0.6; // Durasi animasi tiap kata
-      const staggerDelay = 0.1;
-      // const totalWords = words.length;
-      // const totalAnimationTime = totalDurationPerWord * totalWords;
-
       gsap.fromTo(
         words,
         { opacity: 0, y: 20 },
         {
           opacity: 1,
           y: 0,
-          duration: totalDurationPerWord,
-          stagger: staggerDelay,
-          delay: delay + order * chainDelay, // ✅ Delay dinamis berdasarkan urutan
+          duration: 0.6,
+          stagger,
           ease: "power3.out",
+          delay,
         }
       );
     }
-  }, [delay, text, order, chainDelay]);
+  }, [stagger, delay]);
+
+  useEffect(() => {
+    // Auto trigger jika tidak diatur manual atau explicitly true
+    if (triggerAnimation === undefined || triggerAnimation) {
+      triggerAnim();
+    }
+  }, [triggerAnimation, triggerAnim]);
+
+  // Expose triggerAnim ke parent lewat ref (untuk manual control)
+  useImperativeHandle(ref, () => ({ triggerAnim }));
 
   return (
     <div ref={containerRef} className={cn("flex flex-wrap gap-1", className)}>
       {text.split(" ").map((word, idx) => {
-        const cleanWord = word.replace(/[.,]/g, "");
+        const cleanWord = word.replace(/[.,]/g, ""); // Bersihkan tanda baca
         const isHighlighted = highlightWords.includes(cleanWord);
 
         return (
@@ -66,4 +75,8 @@ export function PerWordText({
       })}
     </div>
   );
-}
+});
+
+PerWordText.displayName = "PerWordText"; // Fix error forwardRef
+
+export { PerWordText };
