@@ -44,19 +44,19 @@ const data = {
       items: [
         {
           title: "Profile",
-          url: "#",
+          url: "/about/#profile",
         },
         {
           title: "History",
-          url: "#",
+          url: "/about/#history",
         },
         {
           title: "Achivements",
-          url: "#",
+          url: "/about/#achievements",
         },
         {
           title: "CV",
-          url: "#",
+          url: "/about/#cv",
         },
       ],
     },

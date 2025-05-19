@@ -28,8 +28,7 @@ export default function Home() {
           "impactful"
         ]}
       />
-      <div className="space-y-3 flex flex-col">
-        <SlideUpText text="Ongoing Project" className="text-2xl" highlightWords={["Project"]}/>
+      <div>
         <OngoingProjectsCarousel/>
       </div>
     </main>

@@ -1,0 +1,130 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
+import { cn } from "@/lib/utils"; // Pastikan util ini ada untuk merging classNames
+import { SlideUpText } from "./SlideUpText"; // Asumsikan ini komponen animasi teks
+
+const achievements = [
+  {
+    title: "1st Place Hackathon 2024",
+    description: "Built an AI-powered productivity app in 24 hours.",
+    date: "March 2024",
+    icon: "🏆",
+  },
+  {
+    title: "Certified Web3 Developer",
+    description: "Completed intensive blockchain development course.",
+    date: "Jan 2024",
+    icon: "📜",
+  },
+  {
+    title: "Published Research Paper",
+    description: "Explored decentralized finance innovations.",
+    date: "Dec 2023",
+    icon: "📖",
+  },
+];
+
+const Achievements = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [disableBlur, setDisableBlur] = useState(false);
+
+  useEffect(() => {
+    if (!api) return;
+
+    const updateState = () => {
+      setCurrent(api.selectedScrollSnap());
+      const visibleItems = api.slidesInView().length;
+      const totalItems = achievements.length;
+      setDisableBlur(visibleItems >= totalItems);
+    };
+
+    updateState(); // Initial state
+    api.on("select", updateState);
+  }, [api]);
+
+  return (
+    <main className="flex relative w-full flex-col mt-8 space-y-12">
+      <div className="flex w-full justify-between items-center">
+        <SlideUpText text="Achievements" className="text-2xl" highlightWords={["Achievements"]} />
+        <div
+            className={cn(
+              "flex flex-row gap-3 px-6 py-3 transition-all duration-300",
+              current === 0
+                ? "justify-end"
+                : current === achievements.length - 1
+                ? "justify-start" 
+                : "justify-between" 
+            )}
+          >
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => {
+                const newIndex = Math.max(current - 1, 0);
+                api?.scrollTo(newIndex);
+                setCurrent(newIndex);
+              }}
+              className={cn(
+                "transition-all duration-300",
+                current === 0 ? "opacity-0 scale-90 pointer-events-none" : "opacity-100 scale-100"
+              )}
+            >
+              <MoveLeftIcon />
+            </Button>
+
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => {
+                const newIndex = Math.min(current + 1, achievements.length - 1);
+                api?.scrollTo(newIndex);
+                setCurrent(newIndex);
+              }}
+              className={cn(
+                "transition-all duration-300",
+                current === achievements.length - 1 ? "opacity-0 scale-90 pointer-events-none hidden" : "opacity-100 scale-100"
+              )}
+            >
+              <MoveRightIcon />
+            </Button>
+          </div>
+
+
+
+      </div>
+
+
+      <Carousel setApi={setApi} className="w-full">
+        <CarouselContent>
+          {achievements.map((item, index) => (
+            <CarouselItem
+                key={index}
+                className={cn(
+                  "basis-full md:basis-1/2 lg:basis-1/3 px-4 transition-all duration-300",
+                  current !== index && "blur-sm hover:blur-none scale-95 opacity-60 hover:opacity-100"
+                )}
+              >
+              <Card className="hover:shadow-lg transition-transform hover:scale-105 h-full">
+                <CardContent className="flex flex-col gap-4 p-6 text-center items-center justify-center">
+                  <div className="text-4xl">{item.icon}</div>
+                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm">{item.description}</p>
+                  <Badge variant="secondary">{item.date}</Badge>
+                </CardContent>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    </main>
+  );
+};
+
+export default Achievements;
