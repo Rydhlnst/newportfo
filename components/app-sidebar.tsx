@@ -4,7 +4,6 @@ import * as React from "react"
 import {
   BookOpen,
   Bot,
-  Computer,
   Globe,
   Package,
   SquareTerminal,
@@ -20,6 +19,7 @@ import { TeamSwitcher } from "./team-switcher"
 import { NavUser } from "./nav-user"
 import { NavMain } from "./nav-main"
 import { NavProjects } from "./nav-projects"
+import { SiEthereum, SiFigma, SiNodedotjs, SiOpenai, SiWeb3Dotjs } from "react-icons/si"
 
 // This is sample data.
 const data = {
@@ -31,7 +31,6 @@ const data = {
   teams: [
     {
       name: "404ryan",
-      logo: Computer,
       plan: "Tech Enthusiast",
     },
   ],
@@ -67,19 +66,23 @@ const data = {
       items: [
         {
           title: "Frontend",
-          url: "#",
+          url: "/tech/#frontend",
         },
         {
           title: "Backend",
-          url: "#",
+          url: "/tech/#backend",
         },
         {
           title: "Database",
-          url: "#",
+          url: "/tech/#database",
         },
         {
-          title: "AI Tools",
-          url: "#",
+          title: "Tools",
+          url: "/tech/#tools",
+        },
+        {
+          title: "Blockchain / Web3",
+          url: "/tech/#web3",
         },
       ],
     },
@@ -108,24 +111,36 @@ const data = {
     },
     {
       title: "Services",
-      url: "#",
+      url: "/services#",
       icon: Package,
       items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    }
-  ],
+    {
+      title: "Web Development",
+      url: "/services/#web-development",
+      icon: SiWeb3Dotjs,
+    },
+    {
+      title: "API Integration",
+      url: "/services/#api-integration",
+      icon: SiNodedotjs,
+    },
+    {
+      title: "AI Integration",
+      url: "/services/#ai-integration",
+      icon: SiOpenai,
+    },
+    {
+      title: "Web3 Development",
+      url: "/services/#web3-development",
+      icon: SiEthereum,
+    },
+    {
+      title: "UI/UX Design",
+      url: "/services/#ui-ux-design",
+      icon: SiFigma,
+    }],
+      }
+    ],
   projects: [
     {
       name: "Devflow",
