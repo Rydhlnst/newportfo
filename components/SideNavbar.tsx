@@ -2,19 +2,7 @@
 
 import { SidebarInset} from "@/components/ui/sidebar";
 
-import { User, Layers, FileText } from "lucide-react";
 import { AppSidebar } from "./app-sidebar";
-
-const items = [
-  { title: "About", url: "/about", icon: User },
-  { title: "Skills", url: "/skills", icon: Layers },
-  { title: "CV", url: "/cv", icon: FileText },
-];
-
-const portfolio = [
-  { title: "Devflow", url: "/projects/devflow", icon: Layers },
-  { title: "Portfolio 2024", url: "/projects/portfolio2024", icon: Layers },
-];
 
 export function Navbar() {
 

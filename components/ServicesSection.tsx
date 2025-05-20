@@ -48,9 +48,12 @@ const services = [
   },
 ];
 
+interface PerWordTextHandle {
+  triggerAnim: () => void;
+}
 
 export default function ServicesSection() {
-      const perWordRef = useRef<any>(null);
+      const perWordRef = useRef<PerWordTextHandle>(null);
     
         useEffect(() => {
             perWordRef.current?.triggerAnim();

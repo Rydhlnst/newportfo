@@ -7,8 +7,12 @@ import { SlideUpText } from "./SlideUpText";
 import { PerWordText } from "./PerWordText";
 import AnimatedOnScroll from "./AnimatedOnScroll";
 
+interface PerWordTextHandle {
+  triggerAnim: () => void;
+}
+
 export default function CVWidget() {
-  const perWordRef = useRef<any>(null);
+  const perWordRef = useRef<PerWordTextHandle>(null);
 
     useEffect(() => {
         perWordRef.current?.triggerAnim();

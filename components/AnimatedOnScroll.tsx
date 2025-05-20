@@ -7,11 +7,20 @@ import { cn } from "@/lib/utils";
 type AnimatedOnScrollProps = {
   children: React.ReactNode;
   className?: string;
-    onTrigger?: () => void;
+  onTrigger?: () => void;
   stagger?: number;
   threshold?: number;
   repeat?: boolean;
 };
+
+// ✅ Tambahkan tipe untuk fiberNode agar aman saat akses properti
+interface FiberNode {
+  return?: {
+    stateNode?: {
+      triggerAnim?: () => void;
+    };
+  };
+}
 
 export default function AnimatedOnScroll({
   children,
@@ -29,22 +38,24 @@ export default function AnimatedOnScroll({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-            onTrigger?.();
+          onTrigger?.();
+
           const elements = containerRef.current?.querySelectorAll(".animate-item") || [];
 
           elements.forEach((el, index) => {
             const reactFiberKey = Object.keys(el).find((key) =>
               key.startsWith("__reactFiber$")
             );
-            const fiberNode = reactFiberKey ? (el as any)[reactFiberKey] : null;
+
+            const fiberNode = reactFiberKey
+              ? (el as unknown as Record<string, unknown>)[reactFiberKey] as FiberNode
+              : null;
 
             const instance = fiberNode?.return?.stateNode;
 
-            // Jika ada triggerAnim di instance, panggil method itu (PerWordText)
             if (instance?.triggerAnim) {
-              setTimeout(() => instance.triggerAnim(), index * stagger * 1000);
+              setTimeout(() => instance.triggerAnim?.(), index * stagger * 1000);
             } else {
-              // Fallback untuk elemen biasa
               gsap.fromTo(
                 el,
                 { opacity: 0, y: 50 },
@@ -68,7 +79,7 @@ export default function AnimatedOnScroll({
     observer.observe(containerRef.current);
 
     return () => observer.disconnect();
-  }, [stagger, threshold, repeat]);
+  }, [stagger, threshold, repeat, onTrigger]);
 
   return (
     <div ref={containerRef} className={cn(className)}>

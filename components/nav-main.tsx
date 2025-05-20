@@ -16,6 +16,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
+import React from "react";
 
 export function NavMain({
   items,
@@ -28,7 +29,7 @@ export function NavMain({
     items?: {
       title: string;
       url: string;
-      icon?: LucideIcon; // ✅ Tambahkan Icon untuk Sub Item
+      icon?: React.ElementType; // ✅ Tambahkan Icon untuk Sub Item
     }[];
   }[];
 }) {

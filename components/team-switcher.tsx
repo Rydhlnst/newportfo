@@ -5,8 +5,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
-} from "@/components/ui/sidebar"
+  } from "@/components/ui/sidebar"
 import Link from "next/link"
 
 export function TeamSwitcher({
@@ -14,12 +13,10 @@ export function TeamSwitcher({
 }: {
   teams: {
     name: string
-    logo: React.ElementType
     plan: string
   }[]
 }) {
-  const { isMobile } = useSidebar()
-  const [activeTeam, setActiveTeam] = React.useState(teams[0])
+  const [activeTeam] = React.useState(teams[0])
 
   if (!activeTeam) {
     return null

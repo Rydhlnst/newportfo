@@ -23,6 +23,12 @@ import {
 import AnimatedOnScroll from "./AnimatedOnScroll";
 import { SlideUpText } from "./SlideUpText";
 
+type TechItem = {
+  icon: React.ReactNode;
+  title: string;
+};
+
+
 export default function TechStackSection() {
   const techStacks = [
     {
@@ -73,8 +79,9 @@ export default function TechStackSection() {
       ],
     },
   ];
+  
 
-  const Section = ({ id, title, stacks }: { id: string; title: string; stacks: any[] }) => (
+  const Section = ({ id, title, stacks }: { id: string; title: string; stacks: TechItem[] }) => (
     <section id={id} className="mt-8 space-y-6 scroll-mt-24">
       <SlideUpText text={title} className="text-2xl font-bold" />
       <AnimatedOnScroll stagger={0.1} repeat className="flex flex-wrap gap-3 justify-start">
