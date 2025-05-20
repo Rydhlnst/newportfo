@@ -47,7 +47,7 @@ const Footer = ({className = ""}: Props) => {
             <h1 className='text-lg font-medium'>404Ryan</h1>
             <p className='text-sm text-muted-foreground'>&quot;Crafting Innovative Web Experiences&quot;</p>
         </div>
-        <SocialLinkCard links={socialLinks}/>
+        <SocialLinkCard links={[...socialLinks]}/>
     </div>
   )
 }
