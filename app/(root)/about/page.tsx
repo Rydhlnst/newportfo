@@ -12,7 +12,7 @@ const AboutPage = () => {
           <Profile/>
           <Separator/>
           <div className='h-full w-full flex flex-col' id='history'>
-            <SlideUpText text='History' className='text-2xl' highlightWords={["History"]}/>
+            <SlideUpText text='History' className='text-2xl mb-14' highlightWords={["History"]}/>
             <TimelineSection/>
           </div>
           <Separator/>

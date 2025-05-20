@@ -72,7 +72,7 @@ export default function TimelineSection() {
       ) : (
         <>
           {/* Central Line */}
-          <div className="absolute left-1/2 top-0 h-full w-1 bg-muted hidden md:block -translate-x-1/2">
+          <div className="absolute top-0 h-full w-[2px] bg-muted left-4 md:left-1/2 md:-translate-x-1/2" >
             <div
               id="progress-line"
               className="absolute left-0 top-0 w-full bg-primary transition-all duration-300"

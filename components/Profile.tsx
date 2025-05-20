@@ -32,7 +32,7 @@ const Profile = () => {
           <PerWordText
             ref={perWordRef2}
             triggerAnimation={false}
-            className="text-3xl font-thin text-justify animate-item"
+            className="text-2xl md:text-3xl xl:text-6xl lg:text-4xl font-thin text-justify animate-item"
             text="I'm Riyan, a Computer Engineering student at Telkom University with a passion for crafting seamless and innovative digital experiences. I specialize in Web Development using modern stacks like Next.js, TypeScript, and Tailwind CSS. Lately, I’ve been diving deep into the world of AI and Web3, exploring how these technologies can create impactful solutions."
             highlightWords={[
                 "Riyan",

@@ -35,13 +35,13 @@ export default function CVWidget() {
           />
           <PerWordText
             ref={perWordRef} 
-            className="text-3xl font-thin text-justify animate-item"
+            className="text-2xl md:text-3xl xl:text-6xl lg:text-4xl font-thin text-justify animate-item"
             text="Interested in collaborating or exploring new opportunities? Download my CV below for more detailed information."
             highlightWords={["Interested", "collaborating", "opportunities?", "detailed"]}
             triggerAnimation={false}
           />
         </div>
-        <div className="w-full justify-end items-center flex animate-item">
+        <div className="w-full h-full justify-end items-end flex flex-col space-y-3 animate-item">
           <Button
             variant="outline"
             size="lg"

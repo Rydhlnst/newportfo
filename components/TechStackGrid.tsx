@@ -1,3 +1,5 @@
+"use client"
+
 import { TechStackCard } from "@/components/TechStackCard";
 import {
   SiNextdotjs,
@@ -22,6 +24,8 @@ import {
 } from "react-icons/si";
 import AnimatedOnScroll from "./AnimatedOnScroll";
 import { SlideUpText } from "./SlideUpText";
+import { PerWordText, PerWordTextHandle } from "./PerWordText";
+import { useEffect, useRef } from "react";
 
 type TechItem = {
   icon: React.ReactNode;
@@ -99,8 +103,18 @@ export default function TechStackSection() {
 
   const toKebabCase = (str: string) => str.toLowerCase().replace(/\s+/g, "-");
 
+    const perWordRef = useRef<PerWordTextHandle>(null);
+  
+      useEffect(() => {
+          perWordRef.current?.triggerAnim();
+      }, []);
+
   return (
     <div className="mt-8">
+      <AnimatedOnScroll stagger={0.1} repeat className="flex flex-col space-y-3" onTrigger={() => perWordRef.current?.triggerAnim()} threshold={0.1}>
+        <SlideUpText text="Tech Stack" className="text-2xl animate-item" highlightWords={["Tech"]}/>
+        <PerWordText ref={perWordRef} highlightWords={["technologies", "frontends", "building", "backends", "databases", "exploring", "Web3"]} className="animate-item text-2xl md:text-3xl lg:text-4xl xl:text-6xl font-thin" text=" Here are the technologies I've worked with across different domains from crafting intuitive frontends to building robust backends, managing databases, and exploring cutting-edge tools and Web3 innovations."/>
+      </AnimatedOnScroll>
       {techStacks.map((stack, index) => (
         <Section
           key={index}

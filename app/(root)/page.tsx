@@ -13,7 +13,7 @@ export default function Home() {
         <RealTimeClock/>
       </div>
      <PerWordText
-        className="text-6xl font-thin text-justify"
+        className="text-2xl md:text-3xl xl:text-6xl lg:text-4xl font-thin text-justify"
         text="Riyan is a passionate web developer focused on crafting seamless digital experiences through clean code and creative design. He is currently exploring the synergy between AI, Web3, and modern web technologies to deliver impactful solutions."
         highlightWords={[
           "Riyan", 
