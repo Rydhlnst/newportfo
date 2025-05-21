@@ -10,11 +10,21 @@ import { cn } from "@/lib/utils";
 import { SlideUpText } from "./SlideUpText";
 import AnimatedOnScroll from "./AnimatedOnScroll";
 
-const achievements = [
-  { title: "1st Place Hackathon 2024", description: "Built an AI-powered productivity app in 24 hours.", date: "March 2024", icon: "🏆" },
-  { title: "Certified Web3 Developer", description: "Completed intensive blockchain development course.", date: "Jan 2024", icon: "📜" },
-  { title: "Published Research Paper", description: "Explored decentralized finance innovations.", date: "Dec 2023", icon: "📖" },
+export const achievements = [
+  {
+    title: "Silver Medal – MiiEX 2023",
+    description: "Awarded for a health-focused food delivery app at the Macao International Innovation Invention Expo.",
+    date: "October 2023",
+    icon: "🥈",
+  },
+  {
+    title: "Best Business Model – Hong Kong Yan Chai STEAM Faire",
+    description: "Recognized for presenting the most innovative business model solution.",
+    date: "October 2023",
+    icon: "💡",
+  },
 ];
+
 
 const Achievements = () => {
   const [api, setApi] = useState<CarouselApi>();

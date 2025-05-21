@@ -142,17 +142,18 @@ const data = {
       }
     ],
   projects: [
-    {
-      name: "Devflow",
-      url: "#",
-      icon: Globe,
-    },
-    {
-      name: "Portfolio 2024",
-      url: "#",
-      icon: Globe,
-    },
-  ],
+  {
+    name: "Devflow",
+    url: "/projects/devflow",
+    icon: Globe,
+  },
+  {
+    name: "Portfolio 2024",
+    url: "/projects/portfolio-2024",
+    icon: Globe,
+  },
+],
+
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {

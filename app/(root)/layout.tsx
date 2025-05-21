@@ -13,7 +13,7 @@ const MainLayout = ({
   return (
     <SidebarProvider>
       <Navbar />
-      <main className='w-full'>
+      <main className='w-full font-dmsans'>
         <div className='w-full p-2 flex space-x-2 sticky top-0 z-10 bg-background border-b'>
             <SidebarTrigger className=''/>
             <PageHeader/>

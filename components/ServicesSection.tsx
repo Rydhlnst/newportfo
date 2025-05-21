@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { SiOpenai, SiEthereum, SiFigma, SiNodedotjs, SiWeb3Dotjs } from "react-icons/si";
+import { SiOpenai, SiFigma, SiNodedotjs, SiWeb3Dotjs } from "react-icons/si";
 import Image from "next/image";
 import AnimatedOnScroll from "./AnimatedOnScroll";
 import { SlideUpText } from "./SlideUpText";
@@ -16,37 +16,51 @@ const services = [
     title: "Web Development",
     description: "Build fast and responsive websites using modern tech stack.",
     image: "/images/webdev-example.png",
-    features: ["Responsive Design", "SEO Optimization", "Performance Optimization", "Cross-Browser Support"],
+    features: [
+      "Responsive Design",
+      "SEO Optimization",
+      "Performance Optimization",
+      "Cross-Browser Support",
+    ],
   },
   {
     icon: <SiNodedotjs className="text-4xl" />,
     title: "API Integration",
     description: "Seamless backend & API integration for powerful apps.",
     image: "/images/missing-image.png",
-    features: ["RESTful API", "Third-party API Integration", "Authentication & Security", "Error Handling"],
+    features: [
+      "RESTful API",
+      "Third-party API Integration",
+      "Authentication & Security",
+      "Error Handling",
+    ],
   },
   {
     icon: <SiOpenai className="text-4xl" />,
     title: "AI Integration",
     description: "Embed AI into your apps for automation and smarter solutions.",
     image: "/images/ai-example.png",
-    features: ["ChatGPT API Integration", "Content Generation", "AI Automation Workflows", "Custom AI Models"],
-  },
-  {
-    icon: <SiEthereum className="text-4xl" />,
-    title: "Web3 Development",
-    description: "Develop decentralized applications and smart contracts.",
-    image: "/images/missing-image.png",
-    features: ["Smart Contract Development", "DApp Deployment", "Wallet Integration", "Tokenomics Design"],
+    features: [
+      "ChatGPT API Integration",
+      "Content Generation",
+      "AI Automation Workflows",
+      "Custom AI Models",
+    ],
   },
   {
     icon: <SiFigma className="text-4xl" />,
-    title: "UI/UX Design",
-    description: "Design engaging, modern, and user-friendly interfaces.",
-    image: "/images/uiux-example.png",
-    features: ["Wireframe & Prototyping", "User Flow Design", "High-Fidelity UI", "Design Handoff with Figma"],
+    title: "Code Optimization",
+    description: "Improve and refactor your existing code for better performance and maintainability.",
+    image: "/images/code-refactor-example.png",
+    features: [
+      "Code Refactoring",
+      "Performance Improvements",
+      "Maintainable Structure",
+      "Best Practices Enforcement",
+    ],
   },
 ];
+
 
 interface PerWordTextHandle {
   triggerAnim: () => void;
@@ -59,10 +73,10 @@ export default function ServicesSection() {
             perWordRef.current?.triggerAnim();
         }, []);
   return (
-    <section id="services" className="py-16 px-4 space-y-16">
+    <section id="services" className="mt-8 space-y-16">
       <AnimatedOnScroll stagger={0.1} className="text-start" repeat>
-        <SlideUpText text=" Services" className="text-3xl font-bold mb-4" />
-        <PerWordText ref={perWordRef} highlightWords={["Services:", "high-quality", "solutions", "needs", "enhancing", "productivity", "driving", "innovation"]} text="What We Provide from Our Services: Delivering high-quality solutions tailored to your business needs, enhancing productivity, and driving innovation." className="text-muted-foreground text-3xl mx-auto mb-12"/>
+        <SlideUpText text=" Services" className="text-2xl mb-3" highlightWords={["Services"]}/>
+        <PerWordText ref={perWordRef} highlightWords={["Services:", "high-quality", "solutions", "needs", "enhancing", "productivity", "driving", "innovation"]} text="What We Provide from Our Services: Delivering high-quality solutions tailored to your business needs, enhancing productivity, and driving innovation." className="font-thin text-2xl md:text-3xl xl:text-6xl lg:text-4xl mx-auto mb-12"/>
       </AnimatedOnScroll>
 
       {services.map((service, index) => (

@@ -7,8 +7,8 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 const pathTitles: Record<string, { title: string; subtitle?: string }> = {
   "/": { title: "Welcome", subtitle: "Home Page" },
   "/about": { title: "About Me", subtitle: "Get to Know Me" },
-  "/skills": { title: "Skills", subtitle: "My Tech Stack" },
-  "/cv": { title: "Curriculum Vitae", subtitle: "Professional Journey" },
+  "/tech": { title: "Tech", subtitle: "My Tech Stack" },
+  "/services": { title: "Services", subtitle: "Professional Journey" },
 };
 
 export function PageHeader() {
