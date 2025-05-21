@@ -1,4 +1,3 @@
-"use client";
 
 import Gallery from "@/components/ImagesProject";
 import { Badge } from "@/components/ui/badge";
