@@ -1,3 +1,21 @@
+import {
+    SiAuth0,
+  SiJavascript,
+  SiJson,
+  SiMdx,
+  SiMongodb,
+  SiMongoose,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiOpenai,
+  SiPino,
+  SiPostcss,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiZod,
+} from "react-icons/si";
+
 export const historyData = [
   {
     year: "2021",
@@ -20,3 +38,103 @@ export const historyData = [
     description: "Exploring how to integrate AI into decentralized Web3 ecosystems through real-world projects.",
   },
 ];
+
+export type ProjectData = {
+  title: string;
+  description: string;
+  tech: string[];
+  images: string[];
+  features: string[];
+  learned: string;
+  live?: string;
+  repo?: string;
+};
+
+export const projectsData: Record<string, ProjectData> = {
+  devflow: {
+    title: "Devflow",
+    description:
+      "Devflow is a developer-friendly platform to manage code snippets.",
+    tech: ["Next.js", "Tailwind", "MongoDB", "TypeScript", "Mongoose", "Auth.js", "React", "ShadCN UI", "Pino", "Zod", "MDX"],
+    images: [
+      "/projects/devflow/1.png",
+      "/projects/devflow/2.png",
+      "/projects/devflow/3.png",
+      "/projects/devflow/4.png",
+      "/projects/devflow/5.png",
+      "/projects/devflow/6.png",
+    ],
+    features: [
+      "Ask and answer developer questions",
+      "Authentication with Google & GitHub",
+      "Tagging system for tech stack",
+      "Syntax highlighted code editor",
+      "Answer Form and Ask Question Form",
+      "Responsive light/dark UI inspired by StackOverflow",
+      "AI Answer Generation",
+      "AI Language Selector",
+      "Profile Edit",
+    ],
+    live: "https://devflow.vercel.app",
+    repo: "https://github.com/Rydhlnst/v2devflow",
+    learned: "Through this project, I learned to structure a full-stack app with Next.js and handle dynamic routing, image optimization, and server-side rendering. I also learned how to implementation AI API and authentication with Auth.js. I also learned how to use Pino for logging and monitoring the application. I also learned how to use ShadCN UI for building a responsive UI.",
+  },
+  "portfolio-2024": {
+    title: "Portfolio 2024",
+    description:
+      "A personal portfolio website built with animation and GSAP.",
+    tech: ["Next.js", "GSAP", "ShadCN UI"],
+    images: [
+      "/projects/portfolio-2024/1.png",
+      "/projects/portfolio-2024/2.png",
+    ],
+    features: [
+      "Smooth scroll-based GSAP animations",
+      "Fully responsive layout",
+      "Dark/light theme toggle",
+      "Project showcase with image gallery",
+      "Optimized for performance and SEO",
+    ],
+    learned: "None"
+  },
+};
+
+import { IconType } from "react-icons";
+
+export const techIconMap: Record<string, IconType> = {
+  // Core
+  "Next.js": SiNextdotjs,
+  React: SiReact,
+  "Node.js": SiNodedotjs,
+  TypeScript: SiTypescript,
+
+  // Styling
+  Tailwind: SiTailwindcss,
+  PostCSS: SiPostcss,
+
+  // Auth & API
+  "next-auth": SiAuth0,
+  "OpenAI API": SiOpenai,
+
+  // Database
+  MongoDB: SiMongodb,
+  Mongoose: SiMongoose,
+
+  // Form & Validation
+  Zod: SiZod,
+
+  // Utils / Infra
+  Pino: SiPino,
+
+  // Markdown / Editor
+  MDX: SiMdx,
+  "next-mdx-remote": SiMdx,
+
+  // Misc
+  "react-hook-form": SiReact,
+  "query-string": SiJson,
+  "lucide-react": SiReact,
+  clsx: SiJavascript,
+  "class-variance-authority": SiJavascript,
+  "tailwind-merge": SiTailwindcss,
+};
