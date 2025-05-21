@@ -2,14 +2,8 @@ import ProjectDetails from "@/components/ProjectDetails";
 import { projectsData } from "@/lib/data";
 import { notFound } from "next/navigation";
 
-type Params = {
-  params: {
-    id: string;
-  };
-};
-
-export default function ProjectPage({ params }: Params) {
-  const { id } = params;
+export default async function ProjectPage({ params }: { params: { id: string } }) {
+  const {id} = await params // ✅ pastikan lowercase!
   const project = projectsData[id];
 
   if (!project) return notFound();
