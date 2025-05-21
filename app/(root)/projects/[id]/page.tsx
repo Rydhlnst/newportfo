@@ -1,4 +1,3 @@
-
 import ProjectDetails from "@/components/ProjectDetails";
 import { projectsData } from "@/lib/data";
 import { notFound } from "next/navigation";
@@ -10,10 +9,10 @@ type Params = {
 };
 
 export default function ProjectPage({ params }: Params) {
-  const project = projectsData[params.id];
+  const { id } = params;
+  const project = projectsData[id];
+
   if (!project) return notFound();
 
-  return (
-    <ProjectDetails project={project}/>
-  );
+  return <ProjectDetails project={project} />;
 }
