@@ -122,7 +122,7 @@ export default function OngoingProjectsCarousel({
           ))}
         </CarouselContent>
 
-        <div className="hidden lg:flex flex-col gap-3 md:w-1/2 px-6 py-3">
+        <div className="hidden xl:flex flex-col gap-3 md:w-1/3 px-6 py-3">
           <div className="flex flex-col space-y-6">
             <div className="flex flex-col space-y-3">
               <h1 className="text-xl">{projectValues[current]?.title}</h1>
@@ -147,7 +147,7 @@ export default function OngoingProjectsCarousel({
               </div>
             </div>
             <div className="lg:block hidden space-y-3">
-            <h2 className="text-xl hidden font-semibold mb-2 ">Key Features</h2>
+            <h2 className="text-xl font-semibold mb-2 ">Key Features</h2>
             <ul className="list-disc list-inside text-sm space-y-1 text-muted-foreground">
               {projectValues[current]?.features.map((feature, i) => (
                 <li key={i}>{feature}</li>
