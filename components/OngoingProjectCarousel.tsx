@@ -75,7 +75,7 @@ export default function OngoingProjectsCarousel({
       >
         <CarouselContent>
           {projectEntries.map(([key, value], index) => (
-            <CarouselItem key={key} className="basis-full">
+            <CarouselItem key={key} className="basis-full w-fit">
               <AnimatedWrapper animation="slide-up" triggerAnimation={current === index}>
                 <Card className="hover:shadow-lg transition-all h-full">
                   <CardContent className="flex flex-col items-center text-center p-4 gap-4">
@@ -102,7 +102,7 @@ export default function OngoingProjectsCarousel({
                     <div className="flex w-full flex-col items-start px-6 border-t pt-6">
                       <h3 className="text-lg font-semibold">{value.title}</h3>
                       <div className="flex w-full items-center justify-between">
-                        <p className="text-sm text-muted-foreground">{value.description}</p>
+                        <p className="text-sm text-muted-foreground text-start">{value.description}</p>
                         {value.live && (
                           <a
                             href={value.live}
@@ -122,7 +122,7 @@ export default function OngoingProjectsCarousel({
           ))}
         </CarouselContent>
 
-        <div className="hidden lg:flex flex-col gap-3 w-3/12 px-6 py-3">
+        <div className="hidden lg:flex flex-col gap-3 md:w-1/2 px-6 py-3">
           <div className="flex flex-col space-y-6">
             <div className="flex flex-col space-y-3">
               <h1 className="text-xl">{projectValues[current]?.title}</h1>
@@ -146,8 +146,8 @@ export default function OngoingProjectsCarousel({
               })}
               </div>
             </div>
-            <div>
-            <h2 className="text-xl font-semibold mb-2">Key Features</h2>
+            <div className="lg:block hidden space-y-3">
+            <h2 className="text-xl hidden font-semibold mb-2 ">Key Features</h2>
             <ul className="list-disc list-inside text-sm space-y-1 text-muted-foreground">
               {projectValues[current]?.features.map((feature, i) => (
                 <li key={i}>{feature}</li>
