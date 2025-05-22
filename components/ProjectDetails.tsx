@@ -17,9 +17,9 @@ const ProjectDetails = ({project}: ProjectDetailsProps) => {
         <h1 className="text-2xl font-bold">{project.title}</h1>
         <p className="text-muted-foreground mt-2">{project.description}</p>
         <div className="text-sm text-muted-foreground mt-2 space-x-4 flex flex-wrap">
-        <span className="flex flex-row space-x-3 items-center justify-center"><SquareCheck/><span>Fullstack Developer</span></span>
-        <span className="flex flex-row space-x-3 items-center justify-center"><Calendar/><span>March – May 2024</span></span>
-        <span className="flex flex-row space-x-3 items-center justify-center"><UsersRound/><span>Solo Project</span></span>
+        <span className="flex flex-row space-x-3 items-center justify-center"><SquareCheck/><span>{project.isFullstack ? "Fullstack Developer" : "Frontend Developer"}</span></span>
+        <span className="flex flex-row space-x-3 items-center justify-center"><Calendar/><span>{project.timeline}</span></span>
+        <span className="flex flex-row space-x-3 items-center justify-center"><UsersRound/><span>{project.isSolo ? "Solo Project": "Team Project"}</span></span>
     </div>
 
       </div>

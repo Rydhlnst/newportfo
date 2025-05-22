@@ -4,6 +4,7 @@ import OngoingProjectsCarousel from "@/components/OngoingProjectCarousel";
 import { PerWordText } from "@/components/PerWordText";
 import RealTimeClock from "@/components/RealTime";
 import { SlideUpText } from "@/components/SlideUpText";
+import { onGoingProjectsData } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -29,7 +30,7 @@ export default function Home() {
         ]}
       />
       <div>
-        <OngoingProjectsCarousel/>
+        <OngoingProjectsCarousel project={onGoingProjectsData}/>
       </div>
     </main>
   );
