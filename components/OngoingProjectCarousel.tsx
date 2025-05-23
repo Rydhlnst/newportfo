@@ -35,7 +35,7 @@ function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
     if (!shouldRender) {
       const interval = setInterval(() => {
         setProgress((prev) => {
-          const next = prev + 2.5;
+          const next = prev + 5;
           return next >= 100 ? 100 : next;
         });
       }, 50); // setiap 50ms
@@ -150,11 +150,11 @@ function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
             <div className="flex flex-col space-y-6">
               <div className="flex flex-col space-y-3">
                 <SlideUpText text={currentProject?.title} className="text-xl" delay={0} />
-                <SlideUpText className="text-muted-foreground" text={currentProject?.description} delay={0.2} />
+                <SlideUpText className="text-muted-foreground" text={currentProject?.description} delay={0.13} />
               </div>
               <div className="flex flex-col" key={`tech-stack-block-${currentKey}`}>
-                <SlideUpText text="Tech Stack" className="text-xl mb-2" highlightWords={["Tech"]} delay={0.4} />
-                <AnimatedWrapper className="flex flex-wrap gap-2" animation="slide-up" delay={0.6} key={current}>
+                <SlideUpText text="Tech Stack" className="text-xl mb-2" highlightWords={["Tech"]} delay={0.26} />
+                <AnimatedWrapper className="flex flex-wrap gap-2" animation="slide-up" delay={0.39} key={current}>
                   {currentProject?.tech.map((tech) => {
                     const Icon = techIconMap[tech];
                     return (
@@ -167,11 +167,11 @@ function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
                 </AnimatedWrapper>
               </div>
               <div className="lg:block hidden space-y-3" key={`key-features-${currentKey}`}>
-                <SlideUpText text="Key Features" highlightWords={["Key"]} className="text-xl font-semibold mb-2" delay={0.8} />
+                <SlideUpText text="Key Features" highlightWords={["Key"]} className="text-xl font-semibold mb-2" delay={0.52} />
                 <ul className="list-disc list-inside space-y-1">
                   {currentProject?.features.map((feature, i) => (
                     <li key={`${currentKey}-${i}`} className="flex">
-                      <AnimatedWrapper animation="slide-up" delay={1 + i * 0.15}>
+                      <AnimatedWrapper animation="slide-up" delay={0.65 + i * 0.15}>
                         {i + 1}. {feature}
                       </AnimatedWrapper>
                     </li>
