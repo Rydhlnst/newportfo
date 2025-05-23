@@ -23,7 +23,7 @@ interface OngoingProjectsCarouselProps {
   project: Record<string, OnGoingProjectDatas>;
 }
 
-export default function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
+function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
   const [hasImageError, setHasImageError] = useState(false);
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
@@ -49,10 +49,10 @@ export default function OngoingProjectsCarousel({ project }: OngoingProjectsCaro
           highlightWords={["Project"]}
         />
         <div className="flex flex-row space-x-3">
-          <Button variant="outline" size="icon" onClick={() => api?.scrollTo(current - 1)}>
+          <Button variant="outline" size="icon" onClick={() => api?.scrollTo(current - 1)} aria-label="Previous Project">
             <MoveLeftIcon />
           </Button>
-          <Button variant="outline" size="icon" onClick={() => api?.scrollTo(current + 1)}>
+          <Button variant="outline" size="icon" onClick={() => api?.scrollTo(current + 1)} aria-label="Next Project">
             <MoveRightIcon />
           </Button>
         </div>
@@ -118,13 +118,13 @@ export default function OngoingProjectsCarousel({ project }: OngoingProjectsCaro
         <div className="hidden xl:flex flex-col gap-3 md:w-1/3 px-6 py-3">
           <div className="flex flex-col space-y-6">
             <div className="flex flex-col space-y-3">
-              <SlideUpText text={currentProject?.title} className="text-xl" delay={0.1} />
-              <SlideUpText className="text-muted-foreground" text={currentProject?.description} delay={0.3} />
+              <SlideUpText text={currentProject?.title} className="text-xl" delay={0} />
+              <SlideUpText className="text-muted-foreground" text={currentProject?.description} delay={0.2} />
             </div>
 
             <div className="flex flex-col" key={`tech-stack-block-${currentKey}`}>
-              <SlideUpText text="Tech Stack" className="text-xl mb-2" highlightWords={["Tech"]} delay={0.5}/>
-              <AnimatedWrapper className="flex flex-wrap gap-2" animation="slide-up" delay={0.7} key={current}>
+              <SlideUpText text="Tech Stack" className="text-xl mb-2" highlightWords={["Tech"]} delay={0.4}/>
+              <AnimatedWrapper className="flex flex-wrap gap-2" animation="slide-up" delay={0.6} key={current}>
                 {currentProject?.tech.map((tech) => {
                   const Icon = techIconMap[tech];
                   return (
@@ -142,11 +142,11 @@ export default function OngoingProjectsCarousel({ project }: OngoingProjectsCaro
             </div>
 
             <div className="lg:block hidden space-y-3" key={`key-features-${currentKey}`}>
-              <SlideUpText text="Key Features" highlightWords={["Key"]} className="text-xl font-semibold mb-2" delay={0.9} />
+              <SlideUpText text="Key Features" highlightWords={["Key"]} className="text-xl font-semibold mb-2" delay={0.8} />
               <ul className="list-disc list-inside space-y-1">
                 {currentProject?.features.map((feature, i) => (
                   <li key={`${currentKey}-${i}`} className="flex">
-                    <AnimatedWrapper animation="slide-up" delay={1.1 + i * 0.15}>
+                    <AnimatedWrapper animation="slide-up" delay={1 + i * 0.15}>
                       {i + 1}. {feature}
                     </AnimatedWrapper>
                   </li>
@@ -159,3 +159,5 @@ export default function OngoingProjectsCarousel({ project }: OngoingProjectsCaro
     </div>
   );
 }
+
+export default OngoingProjectsCarousel;

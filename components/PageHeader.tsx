@@ -54,12 +54,12 @@ export function PageHeader() {
             </BreadcrumbLink>
           </BreadcrumbItem>
           {subtitle && (
-            <div className="flex items-center justify-center space-x-3">
+            <>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
                 <BreadcrumbPage className="font-semibold">{subtitle}</BreadcrumbPage>
               </BreadcrumbItem>
-            </div>
+            </>
           )}
         </BreadcrumbList>
       </Breadcrumb>

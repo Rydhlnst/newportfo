@@ -1,34 +1,55 @@
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+import type { Metadata } from "next";
 
-import { FloatingChat } from '@/components/FloatingChat';
-import Footer from '@/components/Footer';
-import { PageHeader } from '@/components/PageHeader';
-import { Navbar } from '@/components/SideNavbar';
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-import React from 'react'
+export const metadata: Metadata = {
+  title: "404Riyan – Tech Enthusiast & Fullstack Developer",
+  description:
+    "Riyan adalah Web Developer yang fokus pada pengembangan AI, Web3, dan SaaS. Lihat proyek inovatif seperti Form2WA dan AI Note Summarizer.",
+  keywords: [
+    "Riyan",
+    "404Riyan",
+    "Fullstack Developer",
+    "Web3",
+    "AI Developer",
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "MongoDB",
+    "OpenRouter",
+    "Form2WA",
+    "Portfolio",
+  ],
+  authors: [{ name: "Muhammad Riyadhul Jinan Nasution", url: "https://404ryan.com" }],
+  creator: "Riyan",
+  metadataBase: new URL("https://404ryan.com"),
+  openGraph: {
+    title: "404Riyan – Tech Enthusiast & Fullstack Developer",
+    description:
+      "Web developer yang menjelajahi AI, Web3, dan SaaS. Telusuri proyek-proyek kreatif Riyan seperti Form2WA dan AI Note Summarizer.",
+    url: "https://404ryan.com",
+    siteName: "404Riyan",
+    locale: "id_ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "404Riyan – Tech Enthusiast & Fullstack Developer",
+    description:
+      "Eksplorasi proyek AI dan Web3 bersama Riyan, seorang pengembang fullstack muda dengan semangat teknologi.",
+    creator: "@404riyan", // jika punya Twitter
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
-const MainLayout = ({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) => {
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <SidebarProvider>
-      <Navbar />
-      <FloatingChat/>
-      <main className='w-full font-dmsans'>
-        <div className='w-full p-2 flex space-x-2 sticky top-0 z-10 bg-background border-b'>
-            <SidebarTrigger className=''/>
-            <PageHeader/>
-        </div>
-        <div className='h-full flex flex-col'>
-            <div className='flex-grow px-8'>
-                {children}
-            </div>
-            <Footer className='mt-auto px-8'/>
-        </div>
-      </main>
-    </SidebarProvider>
-  )
+    <html lang="id">
+      <body>
+        <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+      </body>
+    </html>
+  );
 }
-
-export default MainLayout
