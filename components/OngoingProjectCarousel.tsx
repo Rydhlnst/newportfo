@@ -29,10 +29,26 @@ function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
   const [current, setCurrent] = React.useState(0);
   const [shouldRender, setShouldRender] = useState(false);
 
+  const [progress, setProgress] = useState(0);
+
   useEffect(() => {
-    const timeout = setTimeout(() => setShouldRender(true), 1500); 
-    return () => clearTimeout(timeout);
-  }, []);
+    if (!shouldRender) {
+      const interval = setInterval(() => {
+        setProgress((prev) => {
+          const next = prev + 2.5; // 100 / 30 langkah
+          return next >= 100 ? 100 : next;
+        });
+      }, 50); // setiap 50ms
+
+      return () => clearInterval(interval);
+    }
+  }, [shouldRender]);
+
+  useEffect(() => {
+    if (progress >= 100) {
+      setTimeout(() => setShouldRender(true), 100); // jeda kecil agar transisi lebih halus
+    }
+  }, [progress]);
 
   React.useEffect(() => {
     if (!api) return;
@@ -67,7 +83,7 @@ function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
       {!shouldRender ? (
           <div className="h-[300px] flex flex-col items-center justify-center gap-2 px-6 text-muted-foreground">
             <span className="text-sm">Loading projects...</span>
-            <Progress className="w-full max-w-sm" value={45} />
+            <Progress className="w-full max-w-sm" value={progress} />
           </div>
 
       ) : (
