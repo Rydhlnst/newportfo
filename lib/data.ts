@@ -51,17 +51,18 @@ export type ProjectData = {
   isFullstack: boolean;
   timeline: string;
   isSolo: boolean;
+  purpose: string;
 };
 
 export const projectsData: Record<string, ProjectData & {
   isFullstack: boolean;
   timeline: string;
   isSolo: boolean;
+  purpose: string;
 }> = {
   devflow: {
     title: "Devflow",
-    description:
-      "Devflow is a developer-friendly platform to manage code snippets.",
+    description: "Devflow is a developer-friendly platform to manage code snippets.",
     tech: [
       "Next.js", "Tailwind", "MongoDB", "TypeScript", "Mongoose",
       "Auth.js", "React", "ShadCN UI", "Pino", "Zod", "MDX"
@@ -91,28 +92,34 @@ export const projectsData: Record<string, ProjectData & {
     isFullstack: true,
     timeline: "24 May – 11 June",
     isSolo: true,
+    purpose: "To create an interactive and AI-enhanced platform for developers to share, manage, and get answers to code-related problems efficiently."
   },
   "portfolio-2024": {
     title: "Portfolio 2024",
-    description: "A personal portfolio website built with animation and GSAP.",
-    tech: ["Next.js", "GSAP", "ShadCN UI"],
+    description: "A personal portfolio website built with clean layout and developer-focused features.",
+    tech: ["Next.js", "Monaco Editor", "ShadCN UI"],
     images: [
-      "/projects/portfolio-2024/1.png",
-      "/projects/portfolio-2024/2.png",
+      "/projects/portfolio-april/1.png",
+      "/projects/portfolio-april/2.png",
+      "/projects/portfolio-april/3.png",
+      "/projects/portfolio-april/4.png",
+      "/projects/portfolio-april/5.png",
     ],
     features: [
-      "Smooth scroll-based GSAP animations",
+      "Interactive code section using Monaco Editor",
       "Fully responsive layout",
       "Dark/light theme toggle",
       "Project showcase with image gallery",
       "Optimized for performance and SEO",
     ],
-    learned: "None",
+    learned: "I learned how to embed and configure Monaco Editor in a React-based Next.js app, as well as how to integrate a chatbot using the ChatGPT API for assistant functionality.",
     isFullstack: false,
     timeline: "18 April – 23 April",
     isSolo: true,
-  },
+    purpose: "To showcase my development skills through a clean, professional portfolio with an emphasis on developer tooling and interactivity."
+  }
 };
+
 
 
 import { IconType } from "react-icons";
@@ -167,11 +174,24 @@ export type OnGoingProjectDatas = {
 };
 
 export const onGoingProjectsData: Record<string, OnGoingProjectDatas> = {
+  "personal-portfolio": {
+    title: "Personal Portfolio",
+    description: "A modern portfolio built with Next.js and GSAP animations.",
+    tech: ["Next.js", "Tailwind CSS", "GSAP", "ShadCN UI", "TypeScript"],
+    images: ["/ongoing/project2.png"],
+    features: [
+      "Animated sections using GSAP",
+      "Project showcase with image previews",
+      "Animated on scroll using GSAP"
+    ],
+    learned: "I explored scroll-based animations using GSAP, and how to build a responsive layout using ShadCN UI.",
+    live: "https://example.com/project3",
+  },
   "ai-note-summarizer": {
     title: "AI Note Summarizer",
-    description: "Summarize notes efficiently using AI-powered models.",
+    description: "Summarize notes efficiently using AI-powered models.",  
     tech: ["Next.js", "TypeScript", "MongoDB", "OpenRouter", "Llama 4", "Markdown"],
-    images: ["/images/project1.png"],
+    images: ["/ongoing/project1.png"],
     features: [
       "Paste note or upload file",
       "Summarize long content with LLM",
@@ -181,18 +201,5 @@ export const onGoingProjectsData: Record<string, OnGoingProjectDatas> = {
     ],
     learned: "I learned how to integrate AI models using OpenRouter and process file input for summarization. I also explored dynamic UI rendering with markdown and structured output.",
     live: "https://github.com/Rydhlnst/AI-Note-Summarizer",
-  },
-  "personal-portfolio": {
-    title: "Personal Portfolio",
-    description: "A modern portfolio built with Next.js and GSAP animations.",
-    tech: ["Next.js", "Tailwind CSS", "GSAP", "ShadCN UI", "TypeScript"],
-    images: ["/images/project3.png"],
-    features: [
-      "Animated sections using GSAP",
-      "Project showcase with image previews",
-      "Responsive layout with dark mode",
-    ],
-    learned: "I explored scroll-based animations using GSAP, and how to build a responsive layout using ShadCN UI.",
-    live: "https://example.com/project3",
   },
 };

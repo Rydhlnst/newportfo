@@ -111,9 +111,8 @@ function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
                         <CardContent className="flex flex-col items-center text-center p-4 gap-4">
                           <AspectRatio
                             ratio={21 / 9}
-                            className="lg:w-full rounded-lg overflow-hidden bg-muted" // Tambahkan bg-muted untuk skeleton
+                            className="lg:w-full rounded-lg overflow-hidden bg-muted"
                           >
-                            {/* Solusi No. 6: Kondisi gambar menggunakan imageErrors[key] */}
                             {!imageErrors[key] &&
                             value.images &&
                             value.images.length > 0 ? (
@@ -128,7 +127,7 @@ function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
                                     [key]: true,
                                   }))
                                 }
-                                className="object-cover"
+                                className="object-contain"
                               />
                             ) : (
                               <div className="w-full h-full relative">

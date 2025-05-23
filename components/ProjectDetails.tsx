@@ -65,7 +65,7 @@ const ProjectDetails = ({project}: ProjectDetailsProps) => {
           <div className="flex flex-col">
             <h2 className="text-xl font-semibold mb-2">Project Purpose</h2>
                 <p className="text-muted-foreground text-sm leading-relaxed text-justify">
-                Devflow was built to solve the problem of developer Q&A being scattered across platforms. It brings a StackOverflow-inspired experience with a cleaner UI and integrated auth.
+                    {project.purpose}
                 </p>
           </div>
             <div className="flex gap-3 mt-6">

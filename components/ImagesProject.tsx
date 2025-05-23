@@ -42,15 +42,19 @@ export default function Gallery({ images }: GalleryProps) {
       {/* Main Image */}
       <div className="w-full max-w-5xl rounded-xl overflow-hidden border">
         {hasImages && !hasError ? (
-          <AspectRatio ratio={16 / 9}>
-            <Image
-              src={currentImage}
-              alt={`Project image ${currentIndex + 1}`}
-              fill
-              className="object-fill rounded-xl"
-              onError={() => setHasError(true)}
-            />
+          <AspectRatio ratio={16 / 9} className="w-full max-w-4xl mx-auto">
+            <div className="relative w-full h-full">
+              <Image
+                src={currentImage}
+                alt={`Project image ${currentIndex + 1}`}
+                fill
+                className="object-contain rounded-xl"
+                sizes="(min-width: 768px) 75vw, 100vw"
+                onError={() => setHasError(true)}
+              />
+            </div>
           </AspectRatio>
+
         ) : (
           <div className="relative aspect-[16/9] w-full h-[300px] rounded-xl overflow-hidden border">
             <Skeleton className="w-full h-full" />

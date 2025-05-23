@@ -46,7 +46,14 @@ export default function CVWidget() {
             variant="outline"
             size="lg"
             className="flex items-center gap-2 mt-4 w-1/2"
-            onClick={() => window.open("/files/my-cv.pdf", "_blank")}
+            onClick={() => {
+              const link = document.createElement("a");
+              link.href = "/files/my-cv.pdf";
+              link.download = "Riyan_CV.pdf"; // nama file saat didownload
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }}
           >
             <DownloadIcon className="w-4 h-4" />
             Download CV
