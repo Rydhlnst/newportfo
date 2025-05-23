@@ -93,19 +93,15 @@ const data = {
       items: [
         {
           title: "How to create App using Next.js",
-          url: "#",
+          url: "/blog/How to create App using Next.js",
         },
         {
           title: "How to easily deploy your web",
-          url: "#",
+          url: "/blog/How to easily deploy your web",
         },
         {
           title: "How to improve your website using AI",
-          url: "#",
-        },
-        {
-          title: "Dunno",
-          url: "#",
+          url: "/blog/How to improve your website using AI",
         },
       ],
     },

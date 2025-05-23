@@ -1,4 +1,5 @@
 
+import { FloatingChat } from '@/components/FloatingChat';
 import Footer from '@/components/Footer';
 import { PageHeader } from '@/components/PageHeader';
 import { Navbar } from '@/components/SideNavbar';
@@ -13,6 +14,7 @@ const MainLayout = ({
   return (
     <SidebarProvider>
       <Navbar />
+      <FloatingChat/>
       <main className='w-full font-dmsans'>
         <div className='w-full p-2 flex space-x-2 sticky top-0 z-10 bg-background border-b'>
             <SidebarTrigger className=''/>

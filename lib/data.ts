@@ -180,16 +180,7 @@ export const onGoingProjectsData: Record<string, OnGoingProjectDatas> = {
       "Modern and clean UI",
     ],
     learned: "I learned how to integrate AI models using OpenRouter and process file input for summarization. I also explored dynamic UI rendering with markdown and structured output.",
-    live: "https://example.com/project1",
-  },
-  mamang: {
-    title: "Mamang",
-    description: "Belum tau.",
-    tech: [],
-    images: ["/images/project2.png"],
-    features: [],
-    learned: "Project masih dalam tahap awal dan belum ada pembelajaran yang bisa disimpulkan.",
-    live: "https://example.com/project2",
+    live: "https://github.com/Rydhlnst/AI-Note-Summarizer",
   },
   "personal-portfolio": {
     title: "Personal Portfolio",
