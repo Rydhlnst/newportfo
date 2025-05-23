@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 import { OngoingProjectSkeleton } from "./OngoingProjectSkeleton";
 
 const OngoingProjectsCarousel = dynamic(() => import("@/components/OngoingProjectCarousel"), {
-  ssr: false,
+  ssr: true,
   loading: () => <OngoingProjectSkeleton/>,
 });
 

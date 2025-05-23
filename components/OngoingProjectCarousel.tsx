@@ -17,8 +17,7 @@ import { SlideUpText } from "./SlideUpText";
 import { OnGoingProjectDatas, techIconMap } from "@/lib/data";
 import { Badge } from "./ui/badge";
 import { Skeleton } from "./ui/skeleton";
-import { Progress } from "./ui/progress";
-// Type
+
 interface OngoingProjectsCarouselProps {
   project: Record<string, OnGoingProjectDatas>;
 }
@@ -27,30 +26,8 @@ function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
   const [hasImageError, setHasImageError] = useState(false);
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
-  const [shouldRender, setShouldRender] = useState(false);
-
-  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (!shouldRender) {
-      const interval = setInterval(() => {
-        setProgress((prev) => {
-          const next = prev + 5;
-          return next >= 100 ? 100 : next;
-        });
-      }, 50); // setiap 50ms
-
-      return () => clearInterval(interval);
-    }
-  }, [shouldRender]);
-
-  useEffect(() => {
-    if (progress >= 100) {
-      setTimeout(() => setShouldRender(true), 100);
-    }
-  }, [progress]);
-
-  React.useEffect(() => {
     if (!api) return;
     setCurrent(api.selectedScrollSnap());
     api.on("select", () => setCurrent(api.selectedScrollSnap()));
@@ -80,108 +57,99 @@ function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
         </div>
       </div>
 
-      {!shouldRender ? (
-          <div className="h-[300px] flex flex-col items-center justify-center gap-2 px-6 text-muted-foreground">
-            <span className="text-sm">Loading projects...</span>
-            <Progress className="w-full max-w-sm" value={progress} />
-          </div>
-
-      ) : (
-        <div className="flex flex-col xl:flex-row gap-6">
-          <div className="xl:w-2/3 w-full">
-            <Carousel className="w-full flex items-start mx-auto" setApi={setApi} opts={{ loop: true }}>
-              <CarouselContent>
-                {projectKeys.map((key, index) => {
-                  const value = project[key];
-                  return (
-                    <CarouselItem key={key} className="basis-full w-fit">
-                      <AnimatedWrapper animation="slide-up" triggerAnimation={current === index}>
-                        <Card className="hover:shadow-lg transition-all h-full">
-                          <CardContent className="flex flex-col items-center text-center p-4 gap-4">
-                            <AspectRatio ratio={21 / 9} className="lg:w-full rounded-lg overflow-hidden">
-                              {!hasImageError && value.images[0] ? (
-                                <Image
-                                  src={value.images[0]}
-                                  alt={value.title}
-                                  fill
-                                  loading="lazy"
-                                  onError={() => setHasImageError(true)}
-                                  className="object-cover"
-                                />
-                              ) : (
-                                <div className="w-full h-full relative">
-                                  <Skeleton className="w-full h-full" />
-                                  <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground gap-2">
-                                    <ImageOff className="w-8 h-8" />
-                                    <span className="text-sm">Oops! Image not found</span>
-                                  </div>
+      <div className="flex flex-col xl:flex-row gap-6">
+        <div className="xl:w-2/3 w-full">
+          <Carousel className="w-full flex items-start mx-auto" setApi={setApi} opts={{ loop: true }}>
+            <CarouselContent>
+              {projectKeys.map((key, index) => {
+                const value = project[key];
+                return (
+                  <CarouselItem key={key} className="basis-full w-fit">
+                    <AnimatedWrapper animation="slide-up" triggerAnimation={current === index}>
+                      <Card className="hover:shadow-lg transition-all h-full">
+                        <CardContent className="flex flex-col items-center text-center p-4 gap-4">
+                          <AspectRatio ratio={21 / 9} className="lg:w-full rounded-lg overflow-hidden">
+                            {!hasImageError && value.images[0] ? (
+                              <Image
+                                src={value.images[0]}
+                                alt={value.title}
+                                fill
+                                loading="lazy"
+                                onError={() => setHasImageError(true)}
+                                className="object-cover"
+                              />
+                            ) : (
+                              <div className="w-full h-full relative">
+                                <Skeleton className="w-full h-full" />
+                                <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground gap-2">
+                                  <ImageOff className="w-8 h-8" />
+                                  <span className="text-sm">Oops! Image not found</span>
                                 </div>
-                              )}
-                            </AspectRatio>
-
-                            <div className="flex w-full flex-col items-start px-6 border-t pt-6">
-                              <h3 className="text-lg font-semibold">{value.title}</h3>
-                              <div className="flex w-full items-center justify-between">
-                                <p className="text-sm text-muted-foreground text-start">{value.description}</p>
-                                {value.live && (
-                                  <a
-                                    href={value.live}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-primary hover:underline text-sm"
-                                  >
-                                    View Project →
-                                  </a>
-                                )}
                               </div>
+                            )}
+                          </AspectRatio>
+
+                          <div className="flex w-full flex-col items-start px-6 border-t pt-6">
+                            <h3 className="text-lg font-semibold">{value.title}</h3>
+                            <div className="flex w-full items-center justify-between">
+                              <p className="text-sm text-muted-foreground text-start">{value.description}</p>
+                              {value.live && (
+                                <a
+                                  href={value.live}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-primary hover:underline text-sm"
+                                >
+                                  View Project →
+                                </a>
+                              )}
                             </div>
-                          </CardContent>
-                        </Card>
-                      </AnimatedWrapper>
-                    </CarouselItem>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </AnimatedWrapper>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+          </Carousel>
+        </div>
+
+        <div className="hidden xl:flex flex-col gap-3 md:w-1/3 px-6 py-3">
+          <div className="flex flex-col space-y-6">
+            <div className="flex flex-col space-y-3">
+              <SlideUpText text={currentProject?.title} className="text-xl" delay={0} />
+              <SlideUpText className="text-muted-foreground" text={currentProject?.description} delay={0.13} />
+            </div>
+            <div className="flex flex-col" key={`tech-stack-block-${currentKey}`}>
+              <SlideUpText text="Tech Stack" className="text-xl mb-2" highlightWords={["Tech"]} delay={0.26} />
+              <AnimatedWrapper className="flex flex-wrap gap-2" animation="slide-up" delay={0.39} key={current}>
+                {currentProject?.tech.map((tech) => {
+                  const Icon = techIconMap[tech];
+                  return (
+                    <Badge key={`${tech}-${currentKey}`} variant="outline" className="flex items-center gap-1 px-5 py-2">
+                      {Icon && <Icon className="w-4 h-4 mr-1" />}
+                      {tech}
+                    </Badge>
                   );
                 })}
-              </CarouselContent>
-            </Carousel>
-          </div>
-
-          {/* Right Detail */}
-          <div className="hidden xl:flex flex-col gap-3 md:w-1/3 px-6 py-3">
-            <div className="flex flex-col space-y-6">
-              <div className="flex flex-col space-y-3">
-                <SlideUpText text={currentProject?.title} className="text-xl" delay={0} />
-                <SlideUpText className="text-muted-foreground" text={currentProject?.description} delay={0.13} />
-              </div>
-              <div className="flex flex-col" key={`tech-stack-block-${currentKey}`}>
-                <SlideUpText text="Tech Stack" className="text-xl mb-2" highlightWords={["Tech"]} delay={0.26} />
-                <AnimatedWrapper className="flex flex-wrap gap-2" animation="slide-up" delay={0.39} key={current}>
-                  {currentProject?.tech.map((tech) => {
-                    const Icon = techIconMap[tech];
-                    return (
-                      <Badge key={`${tech}-${currentKey}`} variant="outline" className="flex items-center gap-1 px-5 py-2">
-                        {Icon && <Icon className="w-4 h-4 mr-1" />}
-                        {tech}
-                      </Badge>
-                    );
-                  })}
-                </AnimatedWrapper>
-              </div>
-              <div className="lg:block hidden space-y-3" key={`key-features-${currentKey}`}>
-                <SlideUpText text="Key Features" highlightWords={["Key"]} className="text-xl font-semibold mb-2" delay={0.52} />
-                <ul className="list-disc list-inside space-y-1">
-                  {currentProject?.features.map((feature, i) => (
-                    <li key={`${currentKey}-${i}`} className="flex">
-                      <AnimatedWrapper animation="slide-up" delay={0.65 + i * 0.15}>
-                        {i + 1}. {feature}
-                      </AnimatedWrapper>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </AnimatedWrapper>
+            </div>
+            <div className="lg:block hidden space-y-3" key={`key-features-${currentKey}`}>
+              <SlideUpText text="Key Features" highlightWords={["Key"]} className="text-xl font-semibold mb-2" delay={0.52} />
+              <ul className="list-disc list-inside space-y-1">
+                {currentProject?.features.map((feature, i) => (
+                  <li key={`${currentKey}-${i}`} className="flex">
+                    <AnimatedWrapper animation="slide-up" delay={0.65 + i * 0.15}>
+                      {i + 1}. {feature}
+                    </AnimatedWrapper>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
