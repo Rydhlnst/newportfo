@@ -35,7 +35,7 @@ function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
     if (!shouldRender) {
       const interval = setInterval(() => {
         setProgress((prev) => {
-          const next = prev + 2.5; // 100 / 30 langkah
+          const next = prev + 2.5;
           return next >= 100 ? 100 : next;
         });
       }, 50); // setiap 50ms
@@ -46,7 +46,7 @@ function OngoingProjectsCarousel({ project }: OngoingProjectsCarouselProps) {
 
   useEffect(() => {
     if (progress >= 100) {
-      setTimeout(() => setShouldRender(true), 100); // jeda kecil agar transisi lebih halus
+      setTimeout(() => setShouldRender(true), 100);
     }
   }, [progress]);
 

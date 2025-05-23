@@ -5,10 +5,11 @@ import RealTimeClock from "@/components/RealTime";
 import { SlideUpText } from "@/components/SlideUpText";
 import { onGoingProjectsData } from "@/lib/data";
 import dynamic from "next/dynamic";
+import { OngoingProjectSkeleton } from "./OngoingProjectSkeleton";
 
 const OngoingProjectsCarousel = dynamic(() => import("@/components/OngoingProjectCarousel"), {
   ssr: false,
-  loading: () => <div className="h-[400px] flex justify-center items-center text-muted-foreground">Loading projects...</div>,
+  loading: () => <OngoingProjectSkeleton/>,
 });
 
 export default function HomeClient() {
