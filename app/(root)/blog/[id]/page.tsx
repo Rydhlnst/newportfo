@@ -1,11 +1,9 @@
 "use client";
 
 import React from "react";
-import { usePathname } from "next/navigation";
 import UnderConstruction from "@/components/UnderConstruction";
 
 const BlogPage = () => {
-  const pathname = usePathname();
   // const blogSlug = pathname.split("/").pop();
 
   return (
