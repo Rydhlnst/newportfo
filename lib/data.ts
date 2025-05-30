@@ -90,7 +90,7 @@ export const projectsData: Record<string, ProjectData & {
     repo: "https://github.com/Rydhlnst/v2devflow",
     learned: "Through this project, I learned to structure a full-stack app with Next.js and handle dynamic routing, image optimization, and server-side rendering. I also learned how to implementation AI API and authentication with Auth.js. I also learned how to use Pino for logging and monitoring the application. I also learned how to use ShadCN UI for building a responsive UI.",
     isFullstack: true,
-    timeline: "24 May – 11 June",
+    timeline: "24 March – 11 April",
     isSolo: true,
     purpose: "To create an interactive and AI-enhanced platform for developers to share, manage, and get answers to code-related problems efficiently."
   },
@@ -117,10 +117,43 @@ export const projectsData: Record<string, ProjectData & {
     timeline: "18 April – 23 April",
     isSolo: true,
     purpose: "To showcase my development skills through a clean, professional portfolio with an emphasis on developer tooling and interactivity."
+  },
+  "cekrek-photobooth": {
+    title: "Cekrek! Photobooth",
+    description: "An interactive web-based photobooth application that allows users to capture photos, create customizable photo strips with various filters, templates, and text/emoji overlays.",
+    tech: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "HTML5 Canvas API",
+      "WebRTC (getUserMedia)",
+      "ShadCN UI",
+      "Tailwind CSS",
+      "Lucide React"
+    ],
+    images: [ // Illustrative paths, replace with actual project screenshots
+      "/projects/cekrek-photobooth/splashscreen.png",
+      "/projects/cekrek-photobooth/main-interface.png",
+    ],
+    features: [
+      "Live camera preview with mirroring option.",
+      "Capture single photos or sequences for photo strips (e.g., 4 or 8 photos).",
+      "Real-time image filters (grayscale, sepia, bright, contrast, etc.).",
+      "Diverse photo strip templates (solid colors, gradients, patterns, custom images).",
+      "Custom text and emoji stamp overlays on strips.",
+      "Ability to retake individual photos within a strip.",
+      "Dynamic photo strip preview before download.",
+      "Downloadable final photo strip as a PNG image.",
+      "Responsive design with adaptive video aspect ratio (4:3 on mobile, 16:9 on larger screens).",
+      "Photo capture countdown timer."
+    ],
+    learned: "Gained significant experience in advanced HTML5 Canvas API usage for dynamic image generation, compositing, and applying filters. Deepened understanding of WebRTC for camera stream management, complex state management in React for interactive UIs, and refactoring large components into modular custom hooks and utilities. Also practiced responsive design for media-rich applications and effective integration of UI libraries like ShadCN UI.",
+    isFullstack: false, // Primarily a front-end application
+    timeline: "May 30 – May 30, 2025", // Example timeline
+    isSolo: true, // Assuming this is from your perspective as the primary developer
+    purpose: "To develop a feature-rich, interactive photobooth web application, showcasing skills in front-end web technologies, media manipulation, and creating engaging user experiences. Serves as a practical project for applying advanced React and browser API concepts."
   }
-};
-
-
+}
 
 import { IconType } from "react-icons";
 

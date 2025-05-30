@@ -20,7 +20,17 @@ import { NavUser } from "./nav-user"
 import { NavMain } from "./nav-main"
 import { NavProjects } from "./nav-projects"
 import { SiEthereum, SiFigma, SiNodedotjs, SiOpenai, SiWeb3Dotjs } from "react-icons/si"
+import { projectsData } from "@/lib/data"
 
+
+const dynamicProjectsArray = Object.keys(projectsData).map(projectId => {
+  const project = projectsData[projectId];
+  return {
+    name: project.title, // Menggunakan title dari data Anda sebagai nama di sidebar
+    url: `/projects/${projectId}`, // Membuat URL dengan projectId
+    icon: Globe, // Tetap menggunakan ikon Globe untuk saat ini
+  };
+});
 // This is sample data.
 const data = {
   user: {
@@ -137,18 +147,7 @@ const data = {
     }],
       }
     ],
-  projects: [
-  {
-    name: "Devflow",
-    url: "/projects/devflow",
-    icon: Globe,
-  },
-  {
-    name: "Portfolio 2024",
-    url: "/projects/portfolio-2024",
-    icon: Globe,
-  },
-],
+  projects: dynamicProjectsArray
 
 }
 
