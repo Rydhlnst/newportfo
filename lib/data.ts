@@ -132,8 +132,8 @@ export const projectsData: Record<string, ProjectData & {
       "Lucide React"
     ],
     images: [ // Illustrative paths, replace with actual project screenshots
-      "/projects/cekrek-photobooth/splashscreen.png",
       "/projects/cekrek-photobooth/main-interface.png",
+      "/projects/cekrek-photobooth/splashscreen.png",
     ],
     features: [
       "Live camera preview with mirroring option.",
