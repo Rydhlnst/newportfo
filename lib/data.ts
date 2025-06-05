@@ -148,10 +148,40 @@ export const projectsData: Record<string, ProjectData & {
       "Photo capture countdown timer."
     ],
     learned: "Gained significant experience in advanced HTML5 Canvas API usage for dynamic image generation, compositing, and applying filters. Deepened understanding of WebRTC for camera stream management, complex state management in React for interactive UIs, and refactoring large components into modular custom hooks and utilities. Also practiced responsive design for media-rich applications and effective integration of UI libraries like ShadCN UI.",
-    isFullstack: false, // Primarily a front-end application
-    timeline: "May 30 – May 30, 2025", // Example timeline
-    isSolo: true, // Assuming this is from your perspective as the primary developer
+    isFullstack: false,
+    timeline: "May 30 – May 30, 2025", 
+    isSolo: true, 
     purpose: "To develop a feature-rich, interactive photobooth web application, showcasing skills in front-end web technologies, media manipulation, and creating engaging user experiences. Serves as a practical project for applying advanced React and browser API concepts."
+  },
+    sniply: {
+    title: "Sniply",
+    description: "Sniply is an AI-powered code analyzer platform that helps developers understand, refactor, and improve their code efficiently.",
+    tech: [
+      "Next.js", "Tailwind", "TypeScript", "ShadCN UI",
+      "OpenRouter API", "Llama 4", "Pino", "Zod", "Monaco Editor"
+    ],
+    images: [
+      "/projects/sniply/1.png",
+      "/projects/sniply/2.png",
+      "/projects/sniply/3.png",
+    ],
+    features: [
+      "AI Code Explanation using LLM (Llama 4 Maverick)",
+      "Fix Suggestions for refactoring or improving code",
+      "Supports multiple languages with syntax highlighting",
+      "Real-time AI response via OpenRouter API",
+      "Modern UI with dark/light toggle",
+      "Markdown-rendered output with interactive formatting",
+      "Fix Suggestion toggle and AI result separator",
+      "Monaco Editor for real-world developer feel",
+      "Versioned changelog page"
+    ],
+    live: "https://sniply.vercel.app",
+    learned: "Through this project, I learned to build a dynamic AI-powered frontend with Monaco Editor integration, markdown rendering, and responsive UI using ShadCN UI. I also implemented structured API calls to LLMs via OpenRouter and designed the architecture to be extensible for future backend and auth integration.",
+    isFullstack: false,
+    timeline: "31 May – 2 June",
+    isSolo: true,
+    purpose: "To create a helpful platform for developers to quickly analyze and improve their code using the power of AI."
   }
 }
 
