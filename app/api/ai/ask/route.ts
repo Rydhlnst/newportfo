@@ -55,7 +55,7 @@ export async function POST(req: Request) {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        "HTTP-Referer": "https://newportfo-psi.vercel.app/",
+        "HTTP-Referer": "https://www.404ryan.com/",
         "X-Title": "404Riyan AI Chat"
       },
       body: JSON.stringify({
